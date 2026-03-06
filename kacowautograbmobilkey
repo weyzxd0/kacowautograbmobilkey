@@ -1,0 +1,222 @@
+local KEY = "KACOW-01979561"
+
+local Player = game:GetService("Players").LocalPlayer
+local guiParent = Player:WaitForChild("PlayerGui")
+
+if guiParent:FindFirstChild("KacowKeyUI") then
+	guiParent.KacowKeyUI:Destroy()
+end
+
+local sg = Instance.new("ScreenGui", guiParent)
+sg.Name = "KacowKeyUI"
+sg.ResetOnSpawn = false
+
+local Frame = Instance.new("Frame", sg)
+Frame.Size = UDim2.new(0,300,0,180)
+Frame.Position = UDim2.new(0.5,-150,0.5,-90)
+Frame.BackgroundColor3 = Color3.fromRGB(15,0,30)
+Frame.Active = true
+Frame.Draggable = true
+Instance.new("UICorner",Frame).CornerRadius = UDim.new(0,20)
+
+local Title = Instance.new("TextLabel",Frame)
+Title.Size = UDim2.new(1,0,0,40)
+Title.BackgroundTransparency = 1
+Title.Text = "KACOW HUB"
+Title.Font = Enum.Font.GothamBlack
+Title.TextScaled = true
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+
+local Box = Instance.new("TextBox",Frame)
+Box.Size = UDim2.new(0.8,0,0,35)
+Box.Position = UDim2.new(0.1,0,0.35,0)
+Box.PlaceholderText = "ENTER KEY"
+Box.Text = ""
+Box.Font = Enum.Font.GothamBold
+Box.TextScaled = true
+Box.BackgroundColor3 = Color3.fromRGB(30,0,60)
+Box.TextColor3 = Color3.fromRGB(255,255,255)
+Instance.new("UICorner",Box)
+
+local Button = Instance.new("TextButton",Frame)
+Button.Size = UDim2.new(0.6,0,0,35)
+Button.Position = UDim2.new(0.2,0,0.6,0)
+Button.Text = "CHECK KEY"
+Button.Font = Enum.Font.GothamBold
+Button.TextScaled = true
+Button.BackgroundColor3 = Color3.fromRGB(0,255,200)
+Button.TextColor3 = Color3.fromRGB(0,0,0)
+Instance.new("UICorner",Button)
+
+local Discord = Instance.new("TextLabel",Frame)
+Discord.Size = UDim2.new(1,0,0,25)
+Discord.Position = UDim2.new(0,0,1,-25)
+Discord.BackgroundTransparency = 1
+Discord.Text = "KEY IN DC | discord.gg/b9WmDzAgrT"
+Discord.Font = Enum.Font.Gotham
+Discord.TextScaled = true
+Discord.TextColor3 = Color3.fromRGB(150,150,255)
+
+Button.MouseButton1Click:Connect(function()
+
+	if Box.Text == KEY then
+
+		sg:Destroy()
+
+		-- =========================
+		-- SENİN SCRIPTİN BAŞLIYOR
+		-- =========================
+
+		print("Made by kacow")
+
+		pcall(function()
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Script by kacow",
+				Text = "Premium Instant E Loaded",
+				Duration = 5
+			})
+		end)
+
+		local Player = game:GetService("Players").LocalPlayer
+		local PPS = game:GetService("ProximityPromptService")
+		local UIS = game:GetService("UserInputService")
+		local TweenService = game:GetService("TweenService")
+
+		local UI_Target = Player:WaitForChild("PlayerGui")
+		if UI_Target:FindFirstChild("WEYZ_UI") then
+			UI_Target.WEYZ_UI:Destroy()
+		end
+
+		local sg = Instance.new("ScreenGui", UI_Target)
+		sg.Name = "WEYZ_UI"
+		sg.ResetOnSpawn = false
+
+		local Main = Instance.new("Frame", sg)
+		Main.Size = UDim2.new(0, 220, 0, 110)
+		Main.Position = UDim2.new(0.5, -110, 0, -100)
+		Main.BackgroundColor3 = Color3.fromRGB(20,20,25)
+		Instance.new("UICorner", Main).CornerRadius = UDim.new(0,14)
+		Main.Active = true
+		Main.Draggable = true
+
+		local TitleBG = Instance.new("Frame", Main)
+		TitleBG.Size = UDim2.new(1,0,0,40)
+		TitleBG.Position = UDim2.new(0,0,0,5)
+		Instance.new("UICorner", TitleBG).CornerRadius = UDim.new(0,12)
+
+		local Title = Instance.new("TextLabel", TitleBG)
+		Title.Size = UDim2.new(1,0,1,0)
+		Title.BackgroundTransparency = 1
+		Title.Text = "Script by kacow\nKEY IN DC | discord.gg/b9WmDzAgrT"
+		Title.TextColor3 = Color3.new(1,1,1)
+		Title.TextScaled = true
+		Title.Font = Enum.Font.GothamBlack
+
+		local colors = {
+			Color3.fromRGB(255,0,0),
+			Color3.fromRGB(255,150,0),
+			Color3.fromRGB(0,255,0),
+			Color3.fromRGB(0,255,255),
+			Color3.fromRGB(0,0,255),
+			Color3.fromRGB(255,0,255)
+		}
+
+		task.spawn(function()
+			local i = 1
+			while true do
+				TweenService:Create(TitleBG, TweenInfo.new(0.4), {
+					BackgroundColor3 = colors[i]
+				}):Play()
+				i += 1
+				if i > #colors then i = 1 end
+				task.wait(0.4)
+			end
+		end)
+
+		local StatusLabel = Instance.new("TextLabel", Main)
+		StatusLabel.Size = UDim2.new(1,-20,0,30)
+		StatusLabel.Position = UDim2.new(0,10,0,60)
+		StatusLabel.BackgroundColor3 = Color3.fromRGB(15,15,15)
+		StatusLabel.Text = "INSTANT E: OFF [Q]"
+		StatusLabel.Font = Enum.Font.GothamBold
+		StatusLabel.TextColor3 = Color3.fromRGB(255,70,70)
+		StatusLabel.TextScaled = true
+		Instance.new("UICorner", StatusLabel)
+
+		TweenService:Create(Main, TweenInfo.new(0.6, Enum.EasingStyle.Back), {
+			Position = UDim2.new(0.5, -110, 0, 30)
+		}):Play()
+
+		local IsActive = false
+
+		local function toggle()
+			IsActive = not IsActive
+			
+			if IsActive then
+				StatusLabel.Text = "INSTANT E: ACTIVE"
+				StatusLabel.TextColor3 = Color3.fromRGB(0,255,170)
+			else
+				StatusLabel.Text = "INSTANT E: OFF [Q]"
+				StatusLabel.TextColor3 = Color3.fromRGB(255,70,70)
+			end
+		end
+
+		UIS.InputBegan:Connect(function(i, p)
+			if not p and i.KeyCode == Enum.KeyCode.Q then
+				toggle()
+			end
+		end)
+
+		PPS.PromptButtonHoldBegan:Connect(function(prompt)
+			if IsActive then
+				prompt.HoldDuration = 0
+				task.spawn(function()
+					prompt:InputHoldBegin()
+					prompt:InputHoldEnd()
+					if fireproximityprompt then
+						fireproximityprompt(prompt)
+					end
+				end)
+			end
+		end)
+
+		PPS.PromptShown:Connect(function(prompt)
+			if IsActive then
+				prompt.HoldDuration = 0
+			end
+		end)
+
+		local MobileBtn = Instance.new("TextButton")
+		MobileBtn.Parent = sg
+		MobileBtn.Size = UDim2.new(0,80,0,80)
+		MobileBtn.Position = UDim2.new(1,-110,1,-150)
+		MobileBtn.Text = "Q"
+		MobileBtn.TextScaled = true
+		MobileBtn.Font = Enum.Font.GothamBlack
+		MobileBtn.TextColor3 = Color3.new(1,1,1)
+		Instance.new("UICorner", MobileBtn).CornerRadius = UDim.new(1,0)
+
+		task.spawn(function()
+			local i = 1
+			while true do
+				TweenService:Create(MobileBtn, TweenInfo.new(0.4), {
+					BackgroundColor3 = colors[i]
+				}):Play()
+				i += 1
+				if i > #colors then i = 1 end
+				task.wait(0.4)
+			end
+		end)
+
+		MobileBtn.MouseButton1Click:Connect(function()
+			toggle()
+		end)
+
+		MobileBtn.Active = true
+		MobileBtn.Draggable = true
+
+	else
+		Box.Text = "WRONG KEY"
+	end
+
+end)
